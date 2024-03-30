@@ -1,0 +1,46 @@
+body{
+background-color: #4D4D4D;
+}
+.aa{
+display: flex;
+justify-content: space-around;
+}
+.image{
+padding 50px;
+}
+p{
+font-size: 25px;
+color:#EDEDED;
+}
+p1{
+font-size:25px;
+color:#EDEDED;
+}
+p2{
+font-size:25px;
+color:#EDEDED;
+}
+p3{
+font-size:25px;
+color:#EDEDED;
+}
+p4{
+font-size:15px;
+color:#4D4D4D;
+}
+p5{
+font-size:15px;
+color:#4D4D4D;
+}
+p6{
+font-size:15px;
+color:#4D4D4D;
+}
+p7{
+font-size:25px;
+color:#EDEDED;
+}
+p9{
+font-size:65px;
+color:#4D4D4D;
+}
