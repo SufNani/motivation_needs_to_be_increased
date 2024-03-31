@@ -6,41 +6,26 @@
     <link rel="stylesheet" href="../static/sasha.css">
 </head>
 <body>
-    <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Меню</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#">Профиль</a>
-    <a href="#">Магазин</a>
-    <a href="#">Статистика</a>
+    <main class="main">
+        <div class="menu">
+    <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+    <label for="burger-checkbox" class="burger"></label>
+    <ul class="menu-list">
+        <li><a href="#" class="menu-item" onclick="klikaj('rad1')">Профиль</a><li>
+        <li><a href="#" class="menu-item" onclick="profil('rad1')">Магазин</a><li>
+        <li><a href="#" class="menu-item" onclick="statistica('rad1')">Статистика</a><form>
+    </ul>
+        </div>
+    </main>
 
 
+<article>
+  <footer class="footer">
+    <p>© 2024 Rubius</p>
+  </footer>
+</article>
 
-       <script>
-           function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
-       </script>
-  </div>
-</div>
-
-
-
+    <script src="../static/sasha.js"></script>
 
 </body>
 </html>
