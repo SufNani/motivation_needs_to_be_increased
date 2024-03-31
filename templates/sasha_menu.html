@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/sasha.css">
+</head>
+<body>
+    <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Меню</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#">Профиль</a>
+    <a href="#">Магазин</a>
+    <a href="#">Статистика</a>
+
+
+
+       <script>
+           function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+       </script>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>
