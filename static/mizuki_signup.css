@@ -13,12 +13,13 @@ color:EDEDED;
 border: medium solid black;
 border-radius:10%;
 height:300px;
+width:30%;
 background-color:#dedace;
 }
 form{
 padding:30px;
 }
-button{
+.button{
 height:50px;
 width:170px;
 font-size:15px;
@@ -35,7 +36,7 @@ margin: 4px 0 0;
     width: 15px;
     height: 15px;
 }
-button:hover{
+.button:hover{
 background-color:#02c419;
 transition:1s;
 }
