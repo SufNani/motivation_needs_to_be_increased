@@ -8,36 +8,23 @@ justify-content: space-around;
 align-items:center;
 padding:30px;
 }
-form1{
+form{
 padding:15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 select{
 font-size:30px;
 }
-form2{
-display:flex;
-flex-direction: column;
-align-items:center;
-padding:0px;
-}
+
 label{
 font-family: arial;
 font-size:25px;
 color:#EDEDED;
 padding:10px;
 }
-form3{
-display:flex;
-flex-direction: column;
-align-items:center;
-padding:10px;
-}
-form4{
-display:flex;
-flex-direction: column;
-align-items:center;
-padding:10px;
-}
+
 .button{
 padding: 0.5em 1.5em;
 font-size:28.5px;
@@ -47,7 +34,7 @@ margin-top:20%;
 }
 .border{
 font-family:Arial;
-color:EDEDED;
+color:#EDEDED;
 border: medium solid black;
 border-radius:10%;
 height:700px;
