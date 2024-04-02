@@ -1,9 +1,10 @@
 body{
-background-color: #4D4D4D;
+background-color: #3b3a3a;
 }
 .aa{
 display: flex;
 justify-content: space-around;
+align-items: flex-end;
 }
 .image{
 padding 50px;
@@ -11,18 +12,22 @@ padding 50px;
 p{
 font-size: 25px;
 color:#EDEDED;
+
 }
 p1{
 font-size:25px;
 color:#EDEDED;
+
 }
 p2{
 font-size:25px;
 color:#EDEDED;
+
 }
 p3{
 font-size:25px;
 color:#EDEDED;
+
 }
 p4{
 font-size:15px;
@@ -38,9 +43,30 @@ color:#4D4D4D;
 }
 p7{
 font-size:25px;
-color:#EDEDED;
+color:#4D4D4D;
+
 }
 p9{
-font-size:65px;
-color:#4D4D4D;
+font-size:25px;
+color:#EDEDED;
+}
+.border{
+font-family:Arial;
+color:EDEDED;
+border: medium solid black;
+border-radius:10%;
+height:800px;
+
+background-color:#4D4D4D;
+form{
+padding:30px;
+}
+button{
+height:50px;
+width:170px;
+font-size:15px;
+}
+button:hover{
+background-color:#b3adad;
+transition:1s;
 }

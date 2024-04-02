@@ -6,7 +6,10 @@ display:flex;
 flex-direction: column;
 justify-content: space-around;
 align-items:center;
-gap: 3em;
+padding:30px;
+}
+form1{
+padding:15px;
 }
 select{
 font-size:30px;
@@ -15,24 +18,47 @@ form2{
 display:flex;
 flex-direction: column;
 align-items:center;
+padding:0px;
 }
 label{
 font-family: arial;
 font-size:25px;
 color:#EDEDED;
+padding:10px;
 }
 form3{
 display:flex;
 flex-direction: column;
 align-items:center;
+padding:10px;
 }
 form4{
 display:flex;
 flex-direction: column;
 align-items:center;
+padding:10px;
 }
 .button{
 padding: 0.5em 1.5em;
 font-size:28.5px;
-color:#AA6BFF;
+color:white;
+background-color:#832afa;
+}
+.border{
+font-family:Arial;
+color:EDEDED;
+border: medium solid black;
+border-radius:10%;
+height:700px;
+width:500px;
+background-color:#616161;
+}
+.be{
+display:flex;
+justify-content:center;
+}
+.button:hover{
+transition:1s;
+background: #6f13eb;
+color: white;
 }
