@@ -8,25 +8,30 @@ align-items: flex-end;
 }
 .image{
 padding 50px;
+margin-top:20px;
 }
 p{
 font-size: 25px;
 color:#EDEDED;
+margin:25px;
 
 }
 p1{
 font-size:25px;
 color:#EDEDED;
+margin:25px;
 
 }
 p2{
 font-size:25px;
 color:#EDEDED;
+margin:25px;
 
 }
 p3{
 font-size:25px;
 color:#EDEDED;
+margin:25px;
 
 }
 p4{
@@ -49,13 +54,15 @@ color:#4D4D4D;
 p9{
 font-size:25px;
 color:#EDEDED;
+padding:25px;
 }
 .border{
 font-family:Arial;
 color:EDEDED;
 border: medium solid black;
 border-radius:10%;
-height:800px;
+height:50%;
+width:50%;
 
 background-color:#4D4D4D;
 form{
