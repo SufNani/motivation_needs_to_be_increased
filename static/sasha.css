@@ -81,10 +81,10 @@ article {
 
 footer {
   display: flex;
-  justify-content: center;
   padding: 5px;
   background-color: #45a1ff;
   color: #fff;
+  justify-content: center;
 }
 
 
@@ -98,6 +98,32 @@ footer {
 .footer{
   height: 80px;
 }
+
+.number {
+    position: relative;
+    top: 65px;
+    left: 1160px;
+    color: white;
+}
+
+.vk {
+    position: absolute;
+    height: 50px;
+    weight: 50px;
+    left: 1065px;
+    cursor: pointer;
+}
+
+.youtube {
+    position: absolute;
+    height: 50px;
+    weight: 50px;
+    left: 1120px;
+    cursor: pointer;
+}
+
+
+
 
 
 
