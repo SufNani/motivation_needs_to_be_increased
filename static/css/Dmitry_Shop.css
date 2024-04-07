@@ -9,14 +9,21 @@
 	height: 600px;
 	border-radius: 10px;
 	border: 3px solid #aa6bff;
+	margin: 20px;
 }
 
 .buy-button {
 	background-color: #383838;
 	color: #ededed;
-	width: 50%;
+	width: 200px;
 	height: 60px;
-	font-size: 150%;
+	font-size: 30px;
+	border-radius: 10px;
+}
+
+.buy-button:hover {
+    background-color: #6f13eb;
+    transition: 0.5s;
 }
 
 .buy-form {
