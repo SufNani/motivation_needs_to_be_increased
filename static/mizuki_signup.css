@@ -1,0 +1,59 @@
+body{
+background-color: #4D4D4D;
+}
+
+.login{
+display: flex;
+justify-content: center;
+margin: 20px;
+padding: 20px;
+}
+
+.container{
+font-family: Arial;
+color: #EDEDED;
+border: medium solid black;
+border-radius: 10%;
+padding-top: 20px;
+padding-bottom: 20px;
+width: 30%;
+background-color: #616161;
+margin-left: 35%;
+}
+
+.button{
+height:60px;
+width:250px;
+background-color: #383838;
+color: #EDEDED;
+font-size:25px;
+display: flex;
+justify-content:center;
+border-radius: 10px;
+padding: 5px;
+transition: 1s;
+}
+p{
+display:flex;
+flex-wrap: wrap;
+font-size:10px;
+}
+input[type=checkbox] {
+margin: 4px 0 0;
+    line-height: normal;
+    width: 15px;
+    height: 15px;
+}
+.button:hover{
+background-color:#6F13EB;
+transition:1s;
+}
+
+.container{
+display:flex;
+justify-content: center;
+}
+
+.form-row{
+margin: 7px;
+}
