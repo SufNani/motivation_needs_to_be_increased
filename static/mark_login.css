@@ -18,10 +18,13 @@ form{
 padding:30px;
 }
 button{
-height:50px;
-width:170px;
+height:60px;
+width:200px;
 font-size:15px;
 justify-content:center;
+background-color:#383838;
+color:white;
+border-radius:10px;
 }
 p{
 display:flex;
@@ -35,7 +38,7 @@ margin: 4px 0 0;
     height: 15px;
 }
 button:hover{
-background-color:#02c419;
+background-color:#6F13eb;
 transition:1s;
 }
 
