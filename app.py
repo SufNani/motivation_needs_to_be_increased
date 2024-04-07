@@ -3,6 +3,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("../templates/loginSasha.html")
+    return render_template("../templates/sasha_menu.html")
 
 app.run()
