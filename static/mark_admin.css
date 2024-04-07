@@ -16,6 +16,7 @@ padding:15px;
 }
 select{
 font-size:30px;
+width:350px;
 }
 
 label{
@@ -26,13 +27,19 @@ padding:10px;
 }
 
 .button{
-padding: 0.5em 1.5em;
-font-size:28.5px;
+width:200px;
+height:60px;
+font-size:30px;
 color:white;
-background-color:#832afa;
-margin-top:20%;
+background-color:#383838;
+margin-top:15%;
+margin:90px;
+border-radius:10px;
 }
 .border{
+display:flex;
+flex-wrap:wrap;
+justify-content:
 font-family:Arial;
 color:#EDEDED;
 border: medium solid black;
@@ -49,4 +56,9 @@ justify-content:center;
 transition:1s;
 background: #6f13eb;
 color: white;
+width:210px;
+height:65px;
+}
+input{
+width:350px;
 }
