@@ -2,14 +2,12 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route("/index")
-@app.route("/main")
-@app.route("/")
+@app.route("/shop")
 def index():
-    return render_template("index.html")
+    return render_template("Dmitry_Shop.html")
 
-@app.route("/test")
+@app.route("/table")
 def test():
-    return "<h1>Это тестовая страница!!!</h1>"
+    return render_template("Dmitry_Table.html")
 
 app.run()
