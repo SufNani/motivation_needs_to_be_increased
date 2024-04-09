@@ -2,23 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RAJ - Главная страница</title>
-    <link rel="stylesheet" href="../static/css/sasha.css">
+    <title>Вход</title>
+    <link rel="stylesheet" href="../static/css/mark_login.css">
+
 </head>
 <body>
-    <main class="main">
+
+<main class="main">
         <div class="menu">
     <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
     <label for="burger-checkbox" class="burger"></label>
     <ul class="menu-list">
         <li><a href="#" class="menu-item" onclick="klikaj('rad1')">Профиль</a><li>
         <li><a href="#" class="menu-item" onclick="profil('rad1')">Магазин</a><li>
-        <li><a href="#" class="menu-item" onclick="statistica('rad1')">Статистика</a>
+        <li><a href="#" class="menu-item" onclick="statistica('rad1')">Статистика</a><form>
     </ul>
         </div>
     </main>
 
 
+  <div class="login">
+  <border>
+      <form>
+      <font color = black> <label>Email</label><br>
+      <input type="text" /></font>
+     <br> <font color = black> <label>Password </label><br>
+      <input type="text" /></font>
+      <br><input type="checkbox" /><p>Соглашаюсь с
+          <br>политикой конфиденциальности</p></font>
+      <br><button type="button">Войти</button>
+      </form>
+  </border>
+  </div>
 
 <article>
   <footer class="footer">
@@ -38,6 +53,5 @@
 </article>
 
     <script src="../static/sasha.js"></script>
-
 </body>
 </html>
