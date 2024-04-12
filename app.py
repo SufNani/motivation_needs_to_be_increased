@@ -12,4 +12,8 @@ def index():
 def test():
     return "<h1>Это тестовая страница!!!</h1>"
 
+@app.route("/menu")
+def signup():
+    return render_template("sasha_menu.html")
+
 app.run()
