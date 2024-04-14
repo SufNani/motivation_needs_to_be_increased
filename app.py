@@ -7,10 +7,14 @@ app = Flask(__name__)
 @app.route("/main")
 @app.route("/")
 def index():
+    time = datetime.datetime.now()
     context = {
-        "name":
+        "time": f"{time.day}.0{time.month}.{time.year}",
+        "user": {
+            "balance": 1488
+        }
     }
-    return render_template("index.html")
+    return render_template("sasha_menu.html", **context)
 
 @app.route("/test")
 def test():
