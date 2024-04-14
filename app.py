@@ -3,6 +3,9 @@ import datetime
 
 app = Flask(__name__)
 
+
+
+
 @app.route("/index")
 @app.route("/main")
 @app.route("/")
