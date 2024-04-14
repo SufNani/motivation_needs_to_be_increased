@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import datetime
 
 app = Flask(__name__)
 
@@ -6,7 +7,10 @@ app = Flask(__name__)
 @app.route("/main")
 @app.route("/")
 def index():
-    return render_template("sasha_menu.html")
+    context = {
+        "name":
+    }
+    return render_template("index.html")
 
 @app.route("/test")
 def test():
