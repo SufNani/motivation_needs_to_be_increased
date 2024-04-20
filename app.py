@@ -6,7 +6,16 @@ app = Flask(__name__)
 @app.route("/main")
 @app.route("/")
 def index():
-    return render_template("index.html")
+    context = {
+        "id": 0,
+        "login": "admin",
+        "password": "admin",
+        "name": "Adminus",
+        "surname": "Adminsov",
+        "age": 0,
+        "balance": 1000000
+    }
+    return render_template("index.html", **context)
 
 @app.route("/test")
 def test():
