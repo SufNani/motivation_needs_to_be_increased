@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+import sqlite3
+
 
 app = Flask(__name__)
 
@@ -30,15 +32,22 @@ def admin():
 
 @app.route('/user')
 def user():
+    conn = sqlite3.connect('static/sqlite.db')
+    cursor = conn.cursor()
+    cursor.execute('select * from sample where id = 1')
+    row = cursor.fetchall()[0]
+    conn.close()
     context = {
         "user": {
-            "phone_number": "1111",
-            "email": "aaa@gmail.com",
-            "birthday": "01.01.1900",
-            "living_place": "Пушкина 1"
+            "name" : row[1],
+            "phone_number": row[2],
+            "email": row[4],
+            "birthday": row[3],
+            "living_place": row[5]
         }
-
     }
+    for row in row:
+        print(row)
     return render_template('mark_user.html', **context)
 
 @app.route('/login')
