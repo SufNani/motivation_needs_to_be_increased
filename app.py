@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import sqlite3
 
 app = Flask(__name__)
 
@@ -6,13 +7,18 @@ app = Flask(__name__)
 @app.route("/main")
 @app.route("/")
 def index():
+    conn = sqlite3.connect('sampledb.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM sample WHERE id = 1')
+    row = cursor.fetchall()[0]
+    conn.close()
     context = {
         "id": 0,
         "login": "admin",
         "password": "admin",
-        "name": "Adminus",
+        "name": row[1],
         "surname": "Adminsov",
-        "age": 0,
+        "age": row[2],
         "balance": 1000000
     }
     return render_template("index.html", **context)
