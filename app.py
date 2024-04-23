@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import datetime
 
 app = Flask(__name__)
 
@@ -10,9 +9,7 @@ app = Flask(__name__)
 @app.route("/main")
 @app.route("/")
 def index():
-    time = datetime.datetime.now()
     context = {
-        "time": f"{time.day}.0{time.month}.{time.year}",
         "user": {
             "balance": 1488
         }
