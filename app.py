@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import sqlite3
 
 app = Flask(__name__)
 
@@ -9,9 +10,15 @@ app = Flask(__name__)
 @app.route("/main")
 @app.route("/")
 def index():
+    conn = sqlite3.connect('ITOG.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT name, balance FROM user WHERE id = 1')
+    row = cursor.fetchall()[0]
+    conn.close()
     context = {
         "user": {
-            "balance": 1488
+            "balance": row[1],
+            "name": row[0]
         }
     }
     return render_template("sasha_menu.html", **context)
