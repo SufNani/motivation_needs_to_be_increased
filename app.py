@@ -25,15 +25,15 @@ def test():
 
 @app.route("/table")
 def table():
-    conn = sqlite3.connect('static/db/dmitry_table.db')
+    conn = sqlite3.connect('static/db/itog.db')
     cur = conn.cursor()
-    print(cur.execute('SELECT name FROM adepts').fetchall())
+    print(cur.execute('SELECT name FROM dmitry_table_adepts').fetchall())
     context = {
         "adepts": [
             {
-                "name": cur.execute('SELECT name FROM adepts').fetchall()[i][0],
-                "points": cur.execute('SELECT points FROM adepts').fetchall()[i][0]
-                } for i in range(cur.execute('SELECT COUNT(*) FROM adepts').fetchall()[0][0])
+                "name": cur.execute('SELECT name FROM dmitry_table_adepts').fetchall()[i][0],
+                "points": cur.execute('SELECT points FROM dmitry_table_adepts').fetchall()[i][0]
+                } for i in range(cur.execute('SELECT COUNT(*) FROM dmitry_table_adepts').fetchall()[0][0])
             ]
         }
     cur.close()
@@ -43,17 +43,17 @@ def table():
 
 @app.route("/shop")
 def shop():
-    conn = sqlite3.connect('static/db/dmitry_shop.db')
+    conn = sqlite3.connect('static/db/itog.db')
     cur = conn.cursor()
-    print(cur.execute('SELECT image_src FROM cards').fetchall())
+    print(cur.execute('SELECT image_src FROM dmitry_shop_cards').fetchall())
     context = {
         "cards": [
             {
-                "image_src": cur.execute("SELECT image_src FROM cards").fetchall()[i][0],
-                "price": cur.execute("SELECT price FROM cards").fetchall()[i][0],
-                "title": cur.execute("SELECT title FROM cards").fetchall()[i][0],
-                "description": cur.execute("SELECT description FROM cards").fetchall()[i][0]
-            } for i in range(cur.execute('SELECT COUNT(*) FROM cards').fetchall()[0][0])
+                "image_src": cur.execute("SELECT image_src FROM dmitry_shop_cards").fetchall()[i][0],
+                "price": cur.execute("SELECT price FROM dmitry_shop_cards").fetchall()[i][0],
+                "title": cur.execute("SELECT title FROM dmitry_shop_cards").fetchall()[i][0],
+                "description": cur.execute("SELECT description FROM dmitry_shop_cards").fetchall()[i][0]
+            } for i in range(cur.execute('SELECT COUNT(*) FROM dmitry_shop_cards').fetchall()[0][0])
         ]
     }
 
