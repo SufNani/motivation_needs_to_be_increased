@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
 import sqlite3
 @app.route('/')
@@ -32,5 +32,11 @@ def user():
 @app.route('/login')
 def login():
     return render_template('mark_login.html')
+
+@app.route("/signup")
+def signup():
+    email = request.args.get('email')
+    print(email)
+    return render_template('mizuki_signup.html')
 app.run()
 
