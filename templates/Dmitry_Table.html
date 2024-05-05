@@ -13,16 +13,14 @@
 			<table class="scores" align="center">
 				<caption><h3>Оценки обучающихся</h3></caption>
 				<thead class="table-line">
-					<th>Обучающиеся</th>
-					<th>Кол-во баллов начисленно</th>
-					<th>Причина начисления</th>
+					<th>Ученик</th>
+					<th>Кол-во баллов</th>
 				</thead>
-                                <tbody>
+				<tbody>
 					{% for adept in adepts %}
 					<tr class="table-line">
 						<td><b>{{ adept.name }}</b></td>
 						<td>{{ adept.points }}</td>
-						<td>{{ adept.reason }}</td>
 					</tr>
 					{% endfor %}
 				</tbody>
