@@ -24,14 +24,17 @@
   <div class="login">
   <border>
       <form method="POST", class="login-window">
-      <font color = black> <label class="email">Email</label><br>
+      <font color = black> <label class="email_input">Email</label><br>
       <input type="text" /></font>
      <br> <font color = black> <label class="pass">Password </label><br>
       <input type="text" /></font>
       <br><input type="checkbox" /><p>Соглашаюсь с
           <br>политикой конфиденциальности</p></font>
-      <br><button type="button">Войти</button>
+      <br><button type="submit">Войти</button>
       </form>
+      {% if error %}
+        <p style="color: red;">{{ error }}</p>
+      {% endif %}
   </border>
   </div>
 
