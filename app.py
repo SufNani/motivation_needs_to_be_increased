@@ -29,14 +29,20 @@ def user():
         }
     }
     return render_template('mark_user.html', **context)
-@app.route('/login')
+@app.route('/login',methods = ['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        input_password = request.form.get('pass')
+        input_email = request.form.get('email')
+        if input_password != user.password:
+            return '<h1>неверный пароль</h1>'
+        elif input_email != user.email:
+            return "<h1>неверная почта</h1>"
+
+
+
+
     return render_template('mark_login.html')
 
-@app.route("/signup")
-def signup():
-    email = request.args.get('email')
-    print(email)
-    return render_template('mizuki_signup.html')
 app.run()
 
