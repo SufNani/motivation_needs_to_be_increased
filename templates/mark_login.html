@@ -23,14 +23,22 @@
 
   <div class="login">
   <border>
-      <form>
-      <font color = black> <label>Email</label><br>
-      <input type="text" /></font>
-     <br> <font color = black> <label>Password </label><br>
-      <input type="text" /></font>
-      <br><input type="checkbox" /><p>Соглашаюсь с
-          <br>политикой конфиденциальности</p></font>
-      <br><button type="button">Войти</button>
+      <form method="POST">
+            <font color = black>
+                <label>Email
+                    <input type="text" value="email">
+                </label>
+            </font>
+            <br>
+            <font color = black>
+                <label>Password
+                    <input type="text" name="password">
+                </label>
+            </font>
+            <br>
+            <input type="checkbox" name="rules"><p>Соглашаюсь с
+            <br>политикой конфиденциальности</p></font>
+            <br><button type="submit">Войти</button>
       </form>
   </border>
   </div>
