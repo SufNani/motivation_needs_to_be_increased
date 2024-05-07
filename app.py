@@ -31,17 +31,17 @@ def user():
     return render_template('mark_user.html', **context)
 @app.route('/login',methods = ['GET', 'POST'])
 def login():
+    conn = sqlite3.connect('static/ITOG.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, phone_number,email, birthday, living_place, password FROM user where email = ?")
+    a = cursor.fetchone()
     if request.method == 'POST':
-        input_password = request.form.get('pass')
-        input_email = request.form.get('email')
-        if input_password != user.password:
-            return '<h1>неверный пароль</h1>'
-        elif input_email != user.email:
-            return "<h1>неверная почта</h1>"
-
-
-
-
+        if not a:
+            return '<h1>юзер с такой почтой не найден</h1>'
+        if a.password == input.password:
+            return "Успешный вход"
+        else:
+            return "Неверный пароль"
     return render_template('mark_login.html')
 
 app.run()
