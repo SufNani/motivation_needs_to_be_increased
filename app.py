@@ -9,21 +9,19 @@ app = Flask(__name__)
 @app.route("/main")
 @app.route("/")
 def index():
-    context = {
-        "id": 0,
-        "login": "admin",
-        "password": "admin",
-        "name": "Adminus",
-        "surname": "Adminsov",
-        "age": 0,
-        "balance": 1000000
-    }
-    conn = sqlite3.connect('static/ITOG.db')
+    conn = sqlite3.connect('ITOG.db')
     cursor = conn.cursor()
-    cursor.execute('select * from user')
+    cursor.execute('SELECT name, balance, birthday FROM user WHERE id = 1')
     row = cursor.fetchall()[0]
     conn.close()
-    return render_template("index.html", **context)
+    context = {
+        "user": {
+            "balance": row[1],
+            "name": row[0],
+            "birthday": row[2]
+        }
+    }
+    return render_template("sasha_menu.html", **context)
 
 
 @app.route('/admin')
@@ -105,6 +103,11 @@ def shop():
         ]
     }
     return render_template("Dmitry_Shop.html", **context)
+
+
+@app.route("/menu")
+def signup():
+    return render_template("sasha_menu.html")
 
 
 app.run()
