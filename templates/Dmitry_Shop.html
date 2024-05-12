@@ -23,19 +23,66 @@
 	</div>
 	
 	<div style="display: flex; padding: 5px; margin: 5px; justify-content: start; align-items: start; flex-wrap: wrap;">
-		{% for card in cards %}
 		<div class="card">
-			<img src="{{ card.image_src }}" class="card-object" />
+			<img src="../static/img/example_img.jpg" class="card-object" />
 			<form action="post" class="buy-form">
 				<button class="buy-button">Заказать</button>
 				<div>
-					<b>{{ card.price }} R.</b>
+					<b>[Цена]</b>
 				</div>
 			</form>
-			<p><b>{{ card.title }}</b></p>
-			<p>{{ card.description }}</p>
+			<p>[Название + описание товара]</p>
 		</div>
-		{% endfor %}
+		<div class="card">
+			<img src="../static/img/cards_deck.jpeg" class="card-object" />
+			<form method="post" action="" class="buy-form">
+				<button class="buy-button" name="laptoop">Заказать</button>
+				<div>
+					<b>1,000 R.</b>
+				</div>
+			</form>
+			<p>Какие-то карты.</p>
+		</div>
+		<div class="card">
+			<img src="../static/img/laptoop.jpeg" class="card-object" />
+			<form action="post" class="buy-form">
+				<button class="buy-button">Заказать</button>
+				<div>
+					<b>100,000 R.</b>
+				</div>
+			</form>
+			<p>Ноутбук.</p>
+		</div>
+		<div class="card">
+			<img src="../static/img/house.jpg" class="card-object" />
+			<form action="post" class="buy-form">
+				<button class="buy-button">Заказать</button>
+				<div>
+					<b>10,000,000 R.</b>
+				</div>
+			</form>
+			<p>Частный дом.</p>
+		</div>
+		<div class="card">
+			<img src="../static/img/rubius_logo.svg" class="card-object" />
+			<form action="post" class="buy-form">
+				<button class="buy-button">Заказать</button>
+				<div>
+					<b>100,000,000 R.</b>
+				</div>
+			</form>
+			<p>Продаем компанию.</p>
+		</div>
+		<div class="card">
+			<img src="../static/img/apple.jpeg" class="card-object" />
+			<form action="post" class="buy-form">
+				<button class="buy-button">Заказать</button>
+				<div>
+					<b>100,000,000,000 R.</b>
+				</div>
+			</form>
+			<p>Яблоко.</p>
+		</div>
 	</div>
 	
     <div class="footer">

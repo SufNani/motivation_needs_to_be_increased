@@ -4,7 +4,6 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="../static/css/Dmitry_Table.css" />
-		<title>RJA - Таблица успеваемости</title>
 	</head>
 	<body>
 		<div class="menu"></div>
@@ -13,16 +12,16 @@
 			<table class="scores" align="center">
 				<caption><h3>Оценки обучающихся</h3></caption>
 				<thead class="table-line">
-					<th>Ученик</th>
-					<th>Кол-во баллов</th>
+					<th></th>
+					<th>Кол-во баллов начисленно</th>
+					<th>Причина начисления</th>
 				</thead>
 				<tbody>
-					{% for adept in adepts %}
 					<tr class="table-line">
-						<td><b>{{ adept.name }}</b></td>
-						<td>{{ adept.points }}</td>
+						<td><b>[Человек]</b></td>
+						<td>[+/- Кол-во баллов]</td>
+						<td>[Причина]</td>
 					</tr>
-					{% endfor %}
 				</tbody>
 				<tr>
 					
