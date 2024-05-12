@@ -110,4 +110,4 @@ def signup():
     return render_template("sasha_menu.html")
 
 
-app.run()
+app.run() #aaa svo
