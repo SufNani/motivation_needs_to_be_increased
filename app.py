@@ -71,7 +71,7 @@ def login():
 
 @app.route("/table")
 def table():
-    conn = sqlite3.connect('static/db/itog.db')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     print(cur.execute('SELECT name FROM dmitry_table_adepts').fetchall())
     context = {
@@ -89,7 +89,7 @@ def table():
 
 @app.route("/shop")
 def shop():
-    conn = sqlite3.connect('static/db/itog.db')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     print(cur.execute('SELECT image_src FROM dmitry_shop_cards').fetchall())
     context = {
