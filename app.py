@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/main")
 @app.route("/")
 def index():
-    conn = sqlite3.connect('ITOG.db')
+    conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute('SELECT name, balance, birthday FROM user WHERE id = 1')
     row = cursor.fetchall()[0]
@@ -31,7 +31,7 @@ def admin():
 
 @app.route('/user')
 def user():
-    conn = sqlite3.connect('static/ITOG.db')
+    conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute("SELECT name, phone_number,email,birthday,living_place FROM user ")
     row = cursor.fetchall()[0]
@@ -51,7 +51,7 @@ def user():
 def login():
     error = None
     if request.method == "POST":
-        conn = sqlite3.connect('static/ITOG.db')
+        conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
         email = request.form.get('email')
         password = request.form.get('password')
