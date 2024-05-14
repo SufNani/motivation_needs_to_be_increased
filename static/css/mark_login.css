@@ -1,45 +1,51 @@
 body{
-background-color:#4D4D4D;
+    background-color:#3b3a3a;
 }
 .login{
-display:flex;
-justify-content:center;
-margin:20px;
-padding:20px;
+    display:flex;
+    justify-content:center;
+    margin:20px;
+    padding:20px;
 }
 border{
-font-family:Arial;
-color:EDEDED;
-border: medium solid black;
-border-radius:10%;
-height:300px;
-background-color:#dedace;
+    font-family:Arial;
+    color:EDEDED;
+    border: medium solid black;
+    border-radius:10%;
+    height:300px;
+    background-color:#dedace;
+}
 form{
-padding:30px;
+    padding:30px;
 }
 button{
-height:60px;
-width:200px;
-font-size:15px;
-justify-content:center;
-background-color:#383838;
-color:white;
-border-radius:10px;
+    height:60px;
+    width:200px;
+    font-size:15px;
+    justify-content:center;
+    background-color:#383838;
+    color:white;
+    border-radius:10px;
 }
 p{
-display:flex;
-flex-wrap: wrap;
-font-size:10px;
+    display:flex;
+    flex-wrap: wrap;
+    font-size:10px;
+}
+p1{
+    display:flex;
+    flex-wrap: wrap;
+    font-size:30px;
 }
 input[type=checkbox] {
-margin: 4px 0 0;
-    line-height: normal;
-    width: 15px;
-    height: 15px;
+    margin: 4px 0 0;
+        line-height: normal;
+        width: 15px;
+        height: 15px;
 }
 button:hover{
-background-color:#6F13eb;
-transition:1s;
+    background-color:#6F13eb;
+    transition:1s;
 }
 
 .burger-checkbox {
@@ -133,7 +139,7 @@ footer {
 }
 
 .logo{
-width: 30%;
+width: 70px;
 }
 
 
@@ -149,16 +155,17 @@ width: 30%;
 }
 
 .vk {
-    height: 50px;
-    weight: 50px;
+    height: 70px;
+    weight: 70px;
     cursor: pointer;
 }
 
 .youtube {
-    height: 50px;
-    weight: 50px;
+    height: 70px;
+    weight: 70px;
     cursor: pointer;
 }
+
 
 
 
