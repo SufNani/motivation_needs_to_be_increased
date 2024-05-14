@@ -24,6 +24,12 @@ def test():
 =======
 >>>>>>> Stashed changes
 
+@app.route('/user')
+def user():
+    user_id = request.args.get('id')
+    password = request.args.get('password')
+    return f'User ID: {user_id}, Password: {password}'
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
 <<<<<<< Updated upstream
