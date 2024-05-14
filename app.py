@@ -15,14 +15,18 @@ def index():
         "phone_number": "+7-(3822)-9-7777-2",
     }
     return render_template("index.html")
+<<<<<<< Updated upstream
 
 
 @app.route("/test")
 def test():
     return "<h1>Это тестовая страница!!!</h1>"
+=======
+>>>>>>> Stashed changes
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+<<<<<<< Updated upstream
     rules_has_error = False
     print(request.method)
     if request.method == "POST":
@@ -40,5 +44,9 @@ def signup():
             return render_template("mark_user.html")
     print(rules_has_error)
     return render_template("mizuki_signup.html", rules_has_error=rules_has_error)
+=======
+    
+    return render_template("mizuki_signup.html")
+>>>>>>> Stashed changes
 
 app.run()
