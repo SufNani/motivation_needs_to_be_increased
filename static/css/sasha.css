@@ -1,3 +1,6 @@
+body{
+    background-color:#3b3a3a;
+}
 .burger-checkbox {
   position: absolute;
   visibility: hidden;
@@ -115,6 +118,8 @@ width: 30%;
     weight: 50px;
     cursor: pointer;
 }
+
+
 
 
 

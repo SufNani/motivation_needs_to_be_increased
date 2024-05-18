@@ -3,9 +3,9 @@ body{
 }
 .login{
     display:flex;
+    align-items:start;
     justify-content:center;
     margin:20px;
-    padding:20px;
 }
 border{
     font-family:Arial;
@@ -14,6 +14,7 @@ border{
     border-radius:10%;
     height:300px;
     background-color:#dedace;
+    margin-top: -700px;
 }
 form{
     padding:30px;
