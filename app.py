@@ -27,12 +27,6 @@ def index():
     return render_template("sasha_menu.html", **context)
 
 
-@app.route('/user')
-def user():
-    user_id = request.args.get('id')
-    password = request.args.get('password')
-    return f'User ID: {user_id}, Password: {password}'
-
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     rules_has_error = False
@@ -61,6 +55,8 @@ def admin():
 
 @app.route('/user')
 def user():
+    user_id = request.args.get('id')
+    password = request.args.get('password')
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute("SELECT name, phone_number,email,birthday,living_place FROM user ")
@@ -133,11 +129,6 @@ def shop():
         ]
     }
     return render_template("Dmitry_Shop.html", **context)
-
-
-@app.route("/menu")
-def signup():
-    return render_template("sasha_menu.html")
 
 
 app.run()
