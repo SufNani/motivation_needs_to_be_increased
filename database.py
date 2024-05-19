@@ -26,9 +26,31 @@ class Database:
             if len(data) == 1: return data[0]
             else: return data
         rdata = {}
-        columns = columns.split(', ')
-        for elm in data:
-            rdata[elm[0]] = {}
-            for i in range(len(elm)):
-                rdata[elm[0]][columns[i]] = elm[i]
+        columns = columns.replace(' ', '').split(',')
+        if groupby_column:
+            for elm in data:
+                rdata[elm[0]] = {}
+                for i in range(len(elm)):
+                    rdata[elm[0]][columns[i]] = elm[i]
+        else:
+            if len(data) == 1:
+                rdata = {}
+                elm = data[0]
+                for i in range(len(elm)):
+                    rdata[columns[i]] = elm[i]
+            else:
+                rdata = []
+                for elm in data:
+                    rldata = {}
+                    for i in range(len(elm)):
+                        rldata[columns[i]] = elm[i]
+                    rdata.append(rldata)
+
         return rdata
+
+def json_merge(*dicts):
+    rdict = {}
+    for dt in dicts:
+        for elm in dt:
+            rdict[elm] = dt[elm]
+    return rdict
