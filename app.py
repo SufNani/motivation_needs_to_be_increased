@@ -1,53 +1,61 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 import sqlite3
 
-
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Replace with a secure secret key
 
 
 @app.route("/index")
 @app.route("/main")
 @app.route("/")
 def index():
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT name, balance, birthday FROM user WHERE id = 1')
-    row = cursor.fetchall()[0]
-    conn.close()
-    context = {
-        "user": {
-            "balance": row[1],
-            "name": row[0],
-            "birthday": row[2]
-        }
-    }
-    return render_template("sasha_menu.html", **context)
+    if 'user_id' in session:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT name, balance, birthday FROM user WHERE id = ?', (session['user_id'],))
+        row = cursor.fetchone()
+        conn.close()
+        if row:
+            context = {
+                "user": {
+                    "balance": row[1],
+                    "name": row[0],
+                    "birthday": row[2]
+                }
+            }
+            return render_template("sasha_menu.html", **context)
+    return redirect(url_for('login'))
 
 
 @app.route('/admin')
 def admin():
-    return render_template('mark_admin.html')
+    if 'user_id' in session:
+        return render_template('mark_admin.html')
+    return redirect(url_for('login'))
 
 
 @app.route('/user')
 def user():
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    cursor.execute("SELECT name, phone_number,email,birthday,living_place FROM user ")
-    row = cursor.fetchall()[0]
-    conn.close()
-    context = {
-        "user": {
-            "phone_number": row[1],
-            "email": row[2],
-            "birthday": row[3],
-            "living_place": row[4]
-        }
-    }
-    return render_template('mark_user.html', **context)
+    if 'user_id' in session:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT name, phone_number, email, birthday, living_place FROM user WHERE id = ?", (session['user_id'],))
+        row = cursor.fetchone()
+        conn.close()
+        if row:
+            context = {
+                "user": {
+                    "phone_number": row[1],
+                    "email": row[2],
+                    "birthday": row[3],
+                    "living_place": row[4]
+                }
+            }
+            return render_template('mark_user.html', **context)
+    return redirect(url_for('login'))
 
 
-@app.route('/login',methods = ['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == "POST":
@@ -55,59 +63,66 @@ def login():
         cursor = conn.cursor()
         email = request.form.get('email')
         password = request.form.get('password')
-        cursor.execute("SELECT name, phone_number,email, birthday, living_place, password FROM user where email = ?",(email,))
+        cursor.execute("SELECT id, name, phone_number, email, birthday, living_place, password FROM user WHERE email = ?", (email,))
         user = cursor.fetchone()
         conn.close()
 
         if user is None:
-            return '<h1>юзер с такой почтой не найден</h1>'
-        elif user[5] != request.form.get('pass'):
-            return "нет"
+            error = 'User with this email not found'
+        elif user[6] != password:
+            error = 'Incorrect password'
         else:
-            return "да"
-    else:
-        return render_template('mark_login.html', error=error)
+            session['user_id'] = user[0]
+            session['user_name'] = user[1]
+            return redirect(url_for('index'))
+    return render_template('mark_login.html', error=error)
+
+
+@app.route("/logout")
+def logout():
+    session.pop('user_id', None)
+    session.pop('user_name', None)
+    return redirect(url_for('login'))
 
 
 @app.route("/table")
 def table():
-    conn = sqlite3.connect('database.db')
-    cur = conn.cursor()
-    print(cur.execute('SELECT name FROM dmitry_table_adepts').fetchall())
-    context = {
-        "adepts": [
-            {
-                "name": cur.execute('SELECT name FROM dmitry_table_adepts').fetchall()[i][0],
-                "points": cur.execute('SELECT points FROM dmitry_table_adepts').fetchall()[i][0]
-                } for i in range(cur.execute('SELECT COUNT(*) FROM dmitry_table_adepts').fetchall()[0][0])
-            ]
+    if 'user_id' in session:
+        conn = sqlite3.connect('database.db')
+        cur = conn.cursor()
+        cur.execute('SELECT name, points FROM dmitry_table_adepts')
+        adepts = cur.fetchall()
+        context = {
+            "adepts": [{"name": adept[0], "points": adept[1]} for adept in adepts]
         }
-    cur.close()
-    conn.close()
-    return render_template('Dmitry_Table.html', **context)
+        cur.close()
+        conn.close()
+        return render_template('Dmitry_Table.html', **context)
+    return redirect(url_for('login'))
 
 
 @app.route("/shop")
 def shop():
-    conn = sqlite3.connect('database.db')
-    cur = conn.cursor()
-    print(cur.execute('SELECT image_src FROM dmitry_shop_cards').fetchall())
-    context = {
-        "cards": [
-            {
-                "image_src": cur.execute("SELECT image_src FROM dmitry_shop_cards").fetchall()[i][0],
-                "price": cur.execute("SELECT price FROM dmitry_shop_cards").fetchall()[i][0],
-                "title": cur.execute("SELECT title FROM dmitry_shop_cards").fetchall()[i][0],
-                "description": cur.execute("SELECT description FROM dmitry_shop_cards").fetchall()[i][0]
-            } for i in range(cur.execute('SELECT COUNT(*) FROM dmitry_shop_cards').fetchall()[0][0])
-        ]
-    }
-    return render_template("Dmitry_Shop.html", **context)
+    if 'user_id' in session:
+        conn = sqlite3.connect('database.db')
+        cur = conn.cursor()
+        cur.execute('SELECT image_src, price, title, description FROM dmitry_shop_cards')
+        cards = cur.fetchall()
+        context = {
+            "cards": [{"image_src": card[0], "price": card[1], "title": card[2], "description": card[3]} for card in cards]
+        }
+        cur.close()
+        conn.close()
+        return render_template("Dmitry_Shop.html", **context)
+    return redirect(url_for('login'))
 
 
 @app.route("/menu")
-def signup():
-    return render_template("sasha_menu.html")
+def menu():
+    if 'user_id' in session:
+        return render_template("sasha_menu.html")
+    return redirect(url_for('login'))
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()
