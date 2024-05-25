@@ -1,5 +1,5 @@
 body{
-background-color: #3b3a3a;
+background-color: #4D4D4D;
 }
 .aa{
 display: flex;
@@ -14,8 +14,8 @@ p{
 font-size: 25px;
 color:#EDEDED;
 margin:25px;
-
 }
+
 p1{
 font-size:25px;
 color:#EDEDED;
@@ -56,19 +56,20 @@ font-size:25px;
 color:#EDEDED;
 padding:25px;
 }
-.border{
+.border_o{
 font-family:Arial;
 color:EDEDED;
 border: medium solid black;
 border-radius:10%;
 height:50%;
 width:50%;
-
 background-color:#4D4D4D;
+
 form{
 padding:30px;
 }
-button{
+
+#button_us{
 height:60px;
 width:200px;
 font-size:20px;
@@ -76,7 +77,8 @@ border-radius:10px;
 background-color:#383838;
 color:white;
 }
-button:hover{
+
+#button_us:hover{
 background-color:#6F13eb;
 width:210px;
 height:65px;

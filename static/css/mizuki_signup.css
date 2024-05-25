@@ -21,7 +21,7 @@ background-color: #616161;
 margin-left: 35%;
 }
 
-.button{
+#button_sign{
 height:60px;
 width:250px;
 background-color: #383838;
@@ -44,7 +44,7 @@ margin: 4px 0 0;
     width: 15px;
     height: 15px;
 }
-.button:hover{
+#button_sign:hover{
 background-color:#6F13EB;
 transition:1s;
 }

@@ -1,12 +1,13 @@
 body{
 background-color:#4D4D4D;
 }
-.login{
+.logino{
 display:flex;
 justify-content:center;
 margin:20px;
 padding:20px;
 }
+
 border{
 font-family:Arial;
 color:EDEDED;
@@ -14,10 +15,12 @@ border: medium solid black;
 border-radius:10%;
 height:300px;
 background-color:#dedace;
+}
+
 form{
 padding:30px;
 }
-button{
+#button_mark{
 height:60px;
 width:200px;
 font-size:15px;
@@ -37,7 +40,7 @@ margin: 4px 0 0;
     width: 15px;
     height: 15px;
 }
-button:hover{
+#button_mark:hover{
 background-color:#6F13eb;
 transition:1s;
 }
@@ -159,6 +162,7 @@ width: 30%;
     weight: 50px;
     cursor: pointer;
 }
+
 
 
 
