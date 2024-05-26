@@ -54,9 +54,30 @@ def user():
     return redirect(url_for('login'))
 
 
-@app.route('/new_login')
+@app.route('/new_login', methods=['GET', 'POST'])
 def new_login():
-    return render_template('new_login.html')
+    error = None
+    if request.method == "POST":
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        email = request.form.get('email')
+        password = request.form.get('password')
+        cursor.execute(
+            "SELECT id, name, phone_number, email, birthday, living_place, password FROM user WHERE email = ?",
+            (email,))
+        user = cursor.fetchone()
+        conn.close()
+
+        if user is None:
+            error = 'User with this email not found'
+        elif user[6] != password:
+            error = 'Incorrect password'
+        else:
+            session['user_id'] = user[0]
+            session['user_name'] = user[1]
+            return redirect(url_for('index'))
+
+    return render_template('new_login.html', error=error)
 
 
 @app.route('/new_signup')
