@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
-import sqlite3, database, datetime
+import from flask import Flask, render_template, request,  redirect, url_for, datetime, sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure secret key
@@ -99,6 +98,12 @@ def signup():
         r_password = request.form.get("repeated_password")
         email = request.form.get("email")
         name = request.form.get("name")
+
+        if not rules:
+            error = 'Вы не приняли пользовательское соглашение'
+        elif password != r_password:
+            error = 'Пароли не совпадают'
+
         if rules != "on":
             rules_has_error = True
         else:
