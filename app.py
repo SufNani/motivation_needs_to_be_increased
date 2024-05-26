@@ -23,7 +23,7 @@ def index():
             }
     context = {"user": user}
 
-    return render_template("sasha_menu.html", **context)
+    return render_template("index.html", **context)
 
 
 @app.route('/admin')
@@ -44,14 +44,26 @@ def user():
         if row:
             context = {
                 "user": {
+                    "name": row[0],
                     "phone_number": row[1],
                     "email": row[2],
                     "birthday": row[3],
                     "living_place": row[4]
                 }
             }
-            return render_template('mark_user.html', **context)
+            return render_template('new_user.html', **context)
     return redirect(url_for('login'))
+
+
+@app.route('/new_login')
+def new_login():
+    return render_template('new_login.html')
+
+
+@app.route('/new_signup')
+def new_signup():
+    return render_template('new_signup.html')
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
