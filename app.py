@@ -21,9 +21,10 @@ def index():
                 "name": row[0],
                 "birthday": row[2]
             }
-    context = {"user": user}
 
+    context = {"user": user}
     return render_template("index.html", **context)
+
 
 
 @app.route('/admin')
@@ -55,18 +56,7 @@ def user():
     return redirect(url_for('login'))
 
 
-@app.route('/new_login')
-def new_login():
-    return render_template('new_login.html')
-
-
-@app.route('/new_signup')
-def new_signup():
-    return render_template('new_signup.html')
-
-
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login',methods = ['GET', 'POST'])
 def login():
     error = None
     if request.method == "POST":
@@ -74,19 +64,17 @@ def login():
         cursor = conn.cursor()
         email = request.form.get('email')
         password = request.form.get('password')
-        cursor.execute("SELECT id, name, phone_number, email, birthday, living_place, password FROM user WHERE email = ?", (email,))
+        cursor.execute("SELECT name, phone_number,email, birthday, living_place, password FROM user where email = ?",(email,))
         user = cursor.fetchone()
         conn.close()
 
         if user is None:
-            error = 'User with this email not found'
-        elif user[6] != password:
-            error = 'Incorrect password'
+            return '<h1>юзер с такой почтой не найден</h1>'
+        elif user[5] != request.form.get('pass'):
+            return redirect('/login')
         else:
-            session['user_id'] = user[0]
-            session['user_name'] = user[1]
-            return redirect(url_for('index'))
-    return render_template('mark_login.html', error=error)
+            return redirect('/user')
+    return render_template('new_login.html')
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -105,46 +93,19 @@ def signup():
             conn = sqlite3.connect("database.db")
             cur = conn.cursor()
             cur.execute("INSERT INTO user(login, email, password) VALUES (?, ?, ?)", (name, email, password))
-            return render_template("mark_user.html")
+            conn.commit()
+            conn.close()
+            return redirect('/user')
     print(rules_has_error)
-    return render_template("mizuki_signup.html", rules_has_error=rules_has_error)
-
+    return render_template('new_signup.html', rules_has_error=rules_has_error)
 @app.route("/logout")
 def logout():
     session.pop('user_id', None)
     session.pop('user_name', None)
     return redirect(url_for('index'))
 
-@app.route('/user')
-def user():
-    user_id = request.args.get('id')
-    password = request.args.get('password')
-    conn = database.Database('database.db')
-    context = {"user": conn.select("name, phone_number, email,birthday, living_place", "user")}
-    conn.kill()
-    return render_template('mark_user.html', **context)
 
 
-@app.route('/login',methods = ['GET', 'POST'])
-def login():
-    error = None
-    if request.method == "POST":
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
-        email = request.form.get('email')
-        password = request.form.get('password')
-        cursor.execute("SELECT name, phone_number,email, birthday, living_place, password FROM user where email = ?",(email,))
-        user = cursor.fetchone()
-        conn.close()
-
-        if user is None:
-            return '<h1>юзер с такой почтой не найден</h1>'
-        elif user[5] != request.form.get('pass'):
-            return "нет"
-        else:
-            return "да"
-    else:
-        return render_template('mark_login.html', error=error)
 
 @app.route("/table")
 def table():
