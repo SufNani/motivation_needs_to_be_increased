@@ -1,6 +1,6 @@
 import datetime
 import sqlite3
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,  redirect, url_for
 
 app = Flask(__name__)
 
@@ -41,6 +41,12 @@ def signup():
         r_password = request.form.get("repeated_password")
         email = request.form.get("email")
         name = request.form.get("name")
+
+        if not rules:
+            error = 'Вы не приняли пользовательское соглашение'
+        elif password != r_password:
+            error = 'Пароли не совпадают'
+
         if rules != "on":
             rules_has_error = True
         else:
