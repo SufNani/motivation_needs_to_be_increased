@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Вход</title>
-    <link rel="stylesheet" href="../static/css/mark_login.css">
-
+    <link rel="stylesheet" href="static/css/mark_login.css">
 
 </head>
 <body>
@@ -22,28 +21,29 @@
     </main>
 
 
-  <div class="logino">
-  <border>
-      <form method="POST", class="login-window">
-      <font color = black> <label class="email_input">Email</label><br>
-      <input type="text" /></font>
-     <br> <font color = black> <label class="pass">Password </label><br>
-      <input type="text" /></font>
-      <br><input type="checkbox" /><p>Соглашаюсь с
-          <br>политикой конфиденциальности</p></font>
-      <br><button type="submit" id="button_mark">Войти</button>
-      </form>
-      {% if error %}
-        <p style="color: red;">{{ error }}</p>
-      {% endif %}
-  </border>
-  </div>
+    <div class="login">
+        <border>
+            <form method="POST" class="login-window">
+                <font color = black> <label class="email_input">Email</label><br>
+                <input type="text" name="email"/></font>
+                <br> <font color = black> <label class="pass">Password </label><br>
+                <input type="text" name="password"/></font>
+                <br><input type="checkbox" name="rules"/><p>Соглашаюсь с
+                <br>политикой конфиденциальности</p></font>
+                <br><button type="submit">Войти</button>
+            </form>
+            {% if error %}
+            <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        </border>
+    </div>
 
 <article>
-  <footer class="footer">
+
+    <footer сlass="footer">
           <div>
-              <p>info@rubius.com</p>
-                <p>+7-(3822)-9-7777-2</p>
+              <p1>info@rubius.com</p1>
+              <p1>+7-(3822)-9-7777-2</p1>
           </div>
         <div>
             <img src="/static/img/Logo.png" class="logo">
@@ -53,6 +53,7 @@
             <img onclick="document.location='https://www.youtube.com/channel/UCdaZKAS2xcUu0xunHIF7d_w'" class="youtube" src="/static/img/youtube.png">
         </div>
      </footer>
+
 </article>
 
     <script src="/static/js/sasha.js"></script>
