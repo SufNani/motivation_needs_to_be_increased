@@ -21,6 +21,7 @@ def index():
                 "name": row[0],
                 "birthday": row[2]
             }
+
     context = {"user": user}
     return render_template("index.html", **context)
 
@@ -88,10 +89,6 @@ def login():
     return render_template('mark_login.html', error=error)
 
 
-
-
-
-
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     rules_has_error = False
@@ -108,7 +105,9 @@ def signup():
             conn = sqlite3.connect("database.db")
             cur = conn.cursor()
             cur.execute("INSERT INTO user(login, email, password) VALUES (?, ?, ?)", (name, email, password))
-            return render_template("mark_user.html")
+            conn.commit()
+            conn.close()
+            return redirect('/user')
     print(rules_has_error)
     return render_template("mizuki_signup.html", rules_has_error=rules_has_error)
 
