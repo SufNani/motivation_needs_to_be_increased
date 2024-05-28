@@ -85,17 +85,18 @@ def login():
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     rules_has_error = False
+    password_unmatch = False
     if request.method == "POST":
         rules = request.form.get("rules")
         password = request.form.get("password")
-        r_password = request.form.get("repeated_password")
+        r_password = request.form.get("re-password")
         email = request.form.get("email")
         name = request.form.get("name")
 
         if not rules:
             rules_has_error = True
         elif password != r_password:
-            rules_has_error = True
+            password_unmatch = True
         else:
             conn = sqlite3.connect("database.db")
             cur = conn.cursor()
@@ -109,7 +110,7 @@ def signup():
                 conn.close()
             return redirect('/login')
 
-    return render_template('new_signup.html', rules_has_error=rules_has_error)
+    return render_template('new_signup.html', rules_has_error=rules_has_error, password_unmatch=password_unmatch)
 
 
 @app.route("/logout")

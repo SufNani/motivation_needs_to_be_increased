@@ -51,8 +51,8 @@
                 <a href="/table" class="menu-item">Статистика</a>
             </nav>
             <div class="header-buttons">
-                <a href="/new_login" class="btn-login">Войти</a>
-                <a href="/new_signup" class="btn-signup">Регистрация</a>
+                <a href="/login" class="btn-login">Войти</a>
+                <a href="/signup" class="btn-signup">Регистрация</a>
             </div>
         </header>
 
@@ -77,8 +77,13 @@
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" name="re-password" required>
-                        <label>Повторите пароль</label>
+                        {% if password_unmatch %}
+                            <input type="password" name="re-password" required>
+                            <label style="color: red">Повторите пароль*</label>
+                        {% else %}
+                            <input type="password" name="re-password" required>
+                            <label>Повторите пароль</label>
+                        {% endif %}
                     </div>
                     <div class="terms-of-use">
                         <label><input type="checkbox" name="rules" required> Я принимаю
