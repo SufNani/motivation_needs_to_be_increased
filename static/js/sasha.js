@@ -10,15 +10,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function klikaj(i)
 {
-    top.location.href='mark_user.html'
+    top.location.href='/user'
 }
 
 function profil(i)
 {
-    top.location.href='Dmitry_Shop.html'
+    top.location.href='/shop'
 }
 
 function statistica(i)
 {
-    top.location.href='Dmitry_Table.html'
+    top.location.href='/table'
 }
