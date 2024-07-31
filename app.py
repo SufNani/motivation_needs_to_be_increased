@@ -54,7 +54,7 @@ def user():
                     "living_place": row[4]
                 }
             }
-            return render_template('new_user.html', **context)
+            return render_template('user.html', **context)
     return redirect(url_for('login'))
 
 
@@ -80,7 +80,7 @@ def login():
             session['user_id'] = user[0]
             session['user_name'] = user[1]
             return redirect('/user')
-    return render_template('new_login.html')
+    return render_template('login.html')
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -111,7 +111,7 @@ def signup():
                 conn.close()
             return redirect('/login')
 
-    return render_template('new_signup.html', rules_has_error=rules_has_error, password_unmatch=password_unmatch)
+    return render_template('signup.html', rules_has_error=rules_has_error, password_unmatch=password_unmatch)
 
 
 @app.route("/logout")
@@ -125,25 +125,24 @@ def logout():
 
 @app.route("/table")
 def table():
-    conn = database.Database('database.db')
-    context = {"adepts": conn.select('name, points', 'dmitry_table_adepts')}
-    conn.kill()
-    return render_template('Dmitry_Table.html', **context)
+    if 'user_id' in session:
+        conn = database.Database('database.db')
+        context = {"adepts": conn.select('name, points', 'dmitry_table_adepts')}
+        conn.kill()
+        return render_template('Dmitry_Table.html', **context)
+    return redirect(url_for('login'))
 
 
 @app.route("/shop")
 def shop():
-    conn = database.Database('database.db')
-    context = {
-        "cards": conn.select('image_src, price, title, description', 'dmitry_shop_cards')
-    }
-    conn.kill()
-    return render_template("Dmitry_Shop.html", **context)
-
-
-@app.route('/menu')
-def menu():
-    return render_template('sasha_menu.html')
+    if 'user_id' in session:
+        # conn = database.Database('database.db')
+        # context = {
+        #     "cards": conn.select('image_src, price, title, description', 'dmitry_shop_cards')
+        # }
+        # conn.kill()
+        return render_template("shop.html")
+    return redirect(url_for('login'))
 
 
 if __name__ == '__main__':

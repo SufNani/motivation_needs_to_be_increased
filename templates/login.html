@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Главная | RA Motivation</title>
+    <title>Вход | RA Motivation</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+
     <div class="page-container">
 
         <header class="header">
@@ -19,21 +20,39 @@
                 <a href="/table" class="menu-item">Статистика</a>
             </nav>
             <div class="header-buttons">
-                {% if user != None %}
-                    <a href="/logout" class="btn-login">Выйти</a>
-                    <p class="btn-balance">Баланс: 0</p>
-                {% else %}
-                    <a href="/login" class="btn-login">Войти</a>
-                    <a href="/signup" class="btn-signup">Регистрация</a>
-                {% endif %}
+                <a href="/login" class="btn-login">Войти</a>
+                <a href="/signup" class="btn-signup">Регистрация</a>
             </div>
         </header>
 
         <div class="wrapper">
-            <div class="welcome-box">
-                <h1>Добро пожаловать в RA Motivation System</h1>
-                <p>RA Motivation System — это мотивационная система, созданная для поддержки и развития учеников нашей академии. Здесь вы сможете отслеживать статистику своего обучения, просматривать накопленные баллы, а также ознакомиться с ассортиментом внутреннего магазина академии.</p>
-                <p>Использование этой системы сделает обучение удобнее и привлекательнее!</p>
+            <div class="form-box login">
+                <h2>Вход в аккаунт</h2>
+                <form method="POST" class="login-window">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="email" required>
+                        <label>Почта</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="password" required>
+                        <label>Пароль</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox" name="remember"> Запомнить</label>
+                        <a href="#">Забыли пароль?</a>
+                    </div>
+                    <button type="submit" class="btn">Войти</button>
+                    <div class="login-register">
+                        <p>Нет аккаунта?
+                            <a href="/new_signup" class="register-link">Зарегистрироваться</a>
+                        </p>
+                    </div>
+                </form>
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
             </div>
         </div>
 
@@ -70,5 +89,7 @@
         </footer>
     </div>
     <script src="/static/js/sasha.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

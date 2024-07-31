@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация | RA Motivation</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <div class="page-container">
+
+        <header class="header">
+            <a href="/" class="logo-link">
+                <img src="/static/img/logo.svg" alt="logo" class="logo">
+            </a>
+            <nav class="nav-menu">
+                <a href="/" class="menu-item">Главная</a>
+                <a href="/shop" class="menu-item">Магазин</a>
+                <a href="/user" class="menu-item">Профиль</a>
+                <a href="/table" class="menu-item">Статистика</a>
+            </nav>
+            <div class="header-buttons">
+                <a href="/login" class="btn-login">Войти</a>
+                <a href="/signup" class="btn-signup">Регистрация</a>
+            </div>
+        </header>
+
+        <div class="wrapper">
+            <div class="form-box register">
+                <h2>Создать аккаунт</h2>
+                <form method="POST" class="login-window">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon></span>
+                        <input type="text" name="fullname" required>
+                        <label>ФИО</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" name="email" required>
+                        <label>Почта</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" name="password" required>
+                        <label>Пароль</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        {% if password_unmatch %}
+                            <input type="password" name="re-password" required>
+                            <label style="color: red">Повторите пароль*</label>
+                        {% else %}
+                            <input type="password" name="re-password" required>
+                            <label>Повторите пароль</label>
+                        {% endif %}
+                    </div>
+                    <div class="terms-of-use">
+                        <label><input type="checkbox" name="rules" required> Я принимаю
+                            <a href="https://kids.rubius.com/personal-info" target="_blank">политику конфиденциальности</a> и
+                            <a href="https://kids.rubius.com/privacy-policy" target="_blank">обработки персональных данных</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn">Зарегистрироваться</button>
+                    <div class="login-register">
+                        <p>Уже есть аккаунт?
+                            <a href="/new_login" class="login-link">Войти</a>
+                        </p>
+                    </div>
+                </form>
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <button class="toggle-footer-btn">Скрыть футер</button>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section contact">
+                    <h5>Контактная информация</h5>
+                    <a href="tel:++73822977759" target="_blank">+7 (3822) 97-77-59</a>
+                    <a href="mailto:academy@rubius.com" target="_blank">academy@rubius.com</a>
+                    <a href="https://yandex.ru/maps/-/CPfaz9C" target="_blank">Томск, ул. Нахимова 13/1</a>
+                </div>
+                <div class="footer-section subdivision">
+                    <h5>Подразделения Rubius Academy Junior</h5>
+                    <a href="https://kids.rubius.com/" target="_blank">IT-академия</a>
+                    <a href="https://kids.rubius.com/english" target="_blank">Английский язык</a>
+                    <a href="https://chess.rubius.com/" target="_blank">Шахматы</a>
+                </div>
+            </div>
+            <div class="footer-section social">
+                <a href="https://vk.com/rubius.academy.junior" target="_blank">
+                    <img src="/static/img/vk.svg" alt="VK">
+                </a>
+                <a href="https://vk.com/rubius.academy.junior" target="_blank">
+                    <img src="/static/img/tg.svg" alt="TG">
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Rubius Academy, 2024</p>
+                <a href="https://kids.rubius.com/personal-info" target="_blank">Политика конфиденциальности</a>
+                <a href="https://kids.rubius.com/privacy-policy" target="_blank">Политика обработки персональных данных</a>
+            </div>
+        </footer>
+    </div>
+    <script src="/static/js/sasha.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
